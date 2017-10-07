@@ -1,2 +1,2 @@
-Stellar is a Simple Note Taking Frontend.
+# Stellar Note Taking
 This project was bootstrapped with [Create React App](https://github.com/facebookincubator/create-react-app).
