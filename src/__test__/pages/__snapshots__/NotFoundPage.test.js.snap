@@ -1,0 +1,9 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Not Found Page render correctly 1`] = `
+<div
+  className="login-page"
+>
+  Not Found Page
+</div>
+`;
