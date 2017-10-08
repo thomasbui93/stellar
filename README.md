@@ -1,5 +1,10 @@
-# Stellar Note Taking
-This project was bootstrapped with [Create React App](https://github.com/facebookincubator/create-react-app).
+<h1 align="center">
+  <br>
+  Stellar Simple Note Taking App
+  <br>
+  <br>
+</h1>
 
-[![JavaScript Style Guide](https://cdn.rawgit.com/standard/standard/master/badge.svg)](https://github.com/standard/standard)
-[![JavaScript Style Guide](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://standardjs.com)
+<p align="center">
+  <a href="https://standardjs.com"><img src="https://img.shields.io/badge/code_style-standard-brightgreen.svg" alt="Standard - JavaScript Style Guide"></a>
+</p>
