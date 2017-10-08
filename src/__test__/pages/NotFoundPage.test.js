@@ -4,8 +4,8 @@ import renderer from 'react-test-renderer';
 
 describe("Not Found Page", function () {
   it('render correctly', () =>{
-    const loader = renderer.create(<NotFoundPage/>);
-    let tree = loader.toJSON();
+    const component = renderer.create(<NotFoundPage/>);
+    let tree = component.toJSON();
     expect(tree).toMatchSnapshot();
   });
 });

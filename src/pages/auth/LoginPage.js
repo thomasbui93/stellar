@@ -21,11 +21,11 @@ export class LoginPage extends Component {
   }
 }
 
-const mapStateToProps = (state) => {
+export const mapStateToProps = ({authReducers}) => {
   return {
-    error: state.authReducers.error,
-    isLoading: state.authReducers.isLoading,
-    isAuthenticated: typeof state.authReducers.token !== 'undefined'
+    error: authReducers.error,
+    isLoading: authReducers.isLoading,
+    isAuthenticated: typeof authReducers.token !== 'undefined' && authReducers.token !== ''
   }
 };
 
@@ -34,7 +34,7 @@ const mapDispatchToProps = (dispatch) => {
     onSubmit: (username, password) => {
       dispatch(requestAuthentication(username, password));
     },
-    redirectToDashboard: () =>{
+    redirectToDashboard: () => {
       dispatch(push('/dashboard'))
     }
   }
