@@ -2,8 +2,7 @@ import React, {Component} from 'react'
 import PropTypes from 'prop-types'
 import {Route, Redirect} from 'react-router'
 
-export default class PrivateRoute  extends Component {
-
+export default class PrivateRoute extends Component {
   static propTypes = {
     component: PropTypes.func,
     path: PropTypes.string,
@@ -12,12 +11,12 @@ export default class PrivateRoute  extends Component {
     strict: PropTypes.bool
   };
 
-  async validate(){
+  async validate () {
 
   }
 
-  render() {
-    const canAccess = true;
-    return canAccess ? <Route {...this.props} /> : <Redirect to="/login" />
+  render () {
+    const canAccess = true
+    return canAccess ? <Route {...this.props} /> : <Redirect to='/login' />
   }
 }

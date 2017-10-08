@@ -5,7 +5,7 @@
   "dependencies": {
     "autoprefixer": "7.1.2",
     "babel-core": "6.25.0",
-    "babel-eslint": "7.2.3",
+    "babel-eslint": "^8.0.1",
     "babel-jest": "20.0.3",
     "babel-loader": "7.1.1",
     "babel-preset-react-app": "^3.0.2",
@@ -16,7 +16,7 @@
     "css-loader": "0.28.4",
     "dotenv": "4.0.0",
     "enzyme": "^3.1.0",
-    "eslint": "4.4.1",
+    "eslint": "3",
     "eslint-config-react-app": "^2.0.0",
     "eslint-loader": "1.9.0",
     "eslint-plugin-flowtype": "2.35.0",
@@ -57,7 +57,8 @@
   "scripts": {
     "start": "node scripts/start.js",
     "build": "node scripts/build.js",
-    "test": "node scripts/test.js --env=jsdom"
+    "test": "node scripts/test.js --env=jsdom",
+    "linter": "standard 'src/**/*.js' --fix"
   },
   "jest": {
     "collectCoverageFrom": [
@@ -106,6 +107,24 @@
     "enzyme-adapter-react-15": "^1.0.1",
     "react-test-renderer": "^15.6.2",
     "sass-loader": "^6.0.6",
-    "sinon": "^4.0.1"
+    "sinon": "^4.0.1",
+    "standard": "^10.0.3"
+  },
+  "standard": {
+    "ignore": [
+      "**.snap",
+      "src/registerServiceWorker.js"
+    ],
+    "parser": "babel-eslint",
+    "globals": [
+      "describe",
+      "context",
+      "before",
+      "beforeEach",
+      "after",
+      "afterEach",
+      "it",
+      "expect"
+    ]
   }
 }

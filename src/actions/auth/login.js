@@ -1,34 +1,33 @@
-import { FAILED_AUTHENTICATION, AUTHENTICATED, DATA_IS_LOADING } from './constants';
-import {post} from "../../utils/request";
+import { FAILED_AUTHENTICATION, AUTHENTICATED, DATA_IS_LOADING } from './constants'
+import {post} from '../../utils/request'
 
 export const requestAuthentication = (username, password) => {
   return function (dispatch) {
-    dispatch(dataIsLoading(true));
+    dispatch(dataIsLoading(true))
     return post('authenticate', {username: username, password: password})
-      .then( response => {
-        dispatch(authenticateSuccessfully(response));
+      .then(response => {
+        dispatch(authenticateSuccessfully(response))
       })
-      .catch( () => {
-        dispatch(authenticateFailed());
+      .catch(() => {
+        dispatch(authenticateFailed())
       })
       .then(() => {
-        dispatch(dataIsLoading(false));
-      });
+        dispatch(dataIsLoading(false))
+      })
   }
-};
+}
 
-export function authenticateSuccessfully(response) {
+export function authenticateSuccessfully (response) {
   return {type: AUTHENTICATED, token: response.token}
 }
 
-export function authenticateFailed() {
+export function authenticateFailed () {
   return {type: FAILED_AUTHENTICATION}
 }
 
-export function dataIsLoading(bool) {
+export function dataIsLoading (bool) {
   return {
     type: DATA_IS_LOADING,
     isLoading: bool
-  };
+  }
 }
-

@@ -5,7 +5,7 @@ import { ConnectedRouter } from 'react-router-redux'
 import store, { history } from './store'
 import App from './App'
 
-const target = document.getElementById('root');
+const target = document.getElementById('root')
 
 render(
   <Provider store={store}>
@@ -16,4 +16,4 @@ render(
     </ConnectedRouter>
   </Provider>,
   target
-);
+)
