@@ -34,7 +34,7 @@ export const dataIsLoading = bool => {
 
 export const removeTag = tagKey => {
   return function (dispatch) {
-    dispatch({type: REMOVING_TAG, key: tagKey});
+    dispatch({type: REMOVING_TAG, key: tagKey})
     return del(`tags/${tagKey}`)
       .then(() => {
         dispatch({type: REMOVE_DONE, key: tagKey})
@@ -43,5 +43,4 @@ export const removeTag = tagKey => {
         dispatch({type: REMOVE_FAILED, key: tagKey})
       })
   }
-};
-
+}

@@ -4,7 +4,6 @@ exports[`DataGrid should render correctly 1`] = `
 <div
   className="admin-data-grid row-data"
 >
-  
   <div
     className="test-class-name"
   >
@@ -28,7 +27,7 @@ exports[`DataGrid should render correctly 1`] = `
     >
       <div
         className="test-class-name__remove"
-        onClick={undefined}
+        onClick={[Function]}
       >
         Delete
       </div>

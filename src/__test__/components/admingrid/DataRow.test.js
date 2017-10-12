@@ -10,7 +10,7 @@ describe('DataRow', () => {
       key: 'test-row',
       isActive: false,
       baseUrl: '/'
-    };
+    }
     const component = renderer.create(
       <MemoryRouter>
         <DataRow item={item} className='row-data' />
