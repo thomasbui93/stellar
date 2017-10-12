@@ -1,7 +1,7 @@
 import {LOAD_TAGS_DONE, LOADING_TAGS, LOAD_TAGS_FAILED, REMOVING_TAG, REMOVE_DONE, REMOVE_FAILED} from './constants'
 import {get, del} from '../../utils/request'
 
-export const requestTags = () => {
+export const requestTags = (sortingOption) => {
   return function (dispatch) {
     dispatch(dataIsLoading(true))
     return get('tags')

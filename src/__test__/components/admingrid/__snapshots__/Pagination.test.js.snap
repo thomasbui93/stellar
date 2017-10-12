@@ -1,0 +1,20 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Pagination render correctly once provide proper props 1`] = `
+<div
+  className="pagination"
+>
+  <div
+    className="pagination-next"
+    onClick={[Function]}
+  >
+    Next
+  </div>
+  <div
+    className="pagination-previous"
+    onClick={[Function]}
+  >
+    Prev
+  </div>
+</div>
+`;
