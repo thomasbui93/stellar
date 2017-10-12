@@ -1,0 +1,50 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`SorterBox render correctly without error 1`] = `
+<div
+  className="sorter-box"
+>
+  <div>
+    <select
+      className="sorter-box__field"
+      onChange={[Function]}
+      value="name"
+    >
+      <option
+        value="name"
+      >
+         
+        Name
+      </option>
+      <option
+        value="title"
+      >
+         
+        Title
+      </option>
+      <option
+        value="description"
+      >
+         
+        Description
+      </option>
+    </select>
+    <select
+      className="sorter-box__direction"
+      onChange={[Function]}
+      value={1}
+    >
+      <option
+        value={1}
+      >
+        DESC
+      </option>
+      <option
+        value={-1}
+      >
+        ASC
+      </option>
+    </select>
+  </div>
+</div>
+`;
