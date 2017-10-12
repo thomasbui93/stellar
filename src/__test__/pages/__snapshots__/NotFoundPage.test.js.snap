@@ -2,7 +2,7 @@
 
 exports[`Not Found Page render correctly 1`] = `
 <div
-  className="login-page"
+  className="not-found-page"
 >
   Not Found Page
 </div>

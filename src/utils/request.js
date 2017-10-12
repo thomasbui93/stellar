@@ -21,10 +21,29 @@ export const post = (URL, data) => {
   })
 }
 
-export const get = (URL) => {
+export const get = (URL, params) => {
   URL = `/api/v1/${URL}`
   return fetch(URL, {
     method: 'GET',
     headers: headers
+  }).then(response => {
+    if (response.status > 400) {
+      throw new Error(`Unexpected happened ${response.statusText}`)
+    } else {
+      return response.json()
+    }
   })
 }
+
+export const del = (URL) => {
+  URL = `/api/v1/${URL}`
+  return fetch(URL, {
+    method: 'DELETE'
+  }).then(response => {
+    if (response.status > 400) {
+      throw new Error(`Unexpected happened ${response.statusText}`)
+    } else {
+      return response.json()
+    }
+  })
+};

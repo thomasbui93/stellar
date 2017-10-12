@@ -1,0 +1,40 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`DataRow should render correctly 1`] = `
+<div
+  className="row-data"
+>
+  <div
+    className="row-data__name"
+  >
+    Test Row
+  </div>
+  <div
+    className="row-data__key"
+  >
+    test-row
+  </div>
+  <div
+    className="row-data__status"
+  >
+    Archived
+  </div>
+  <div
+    className="row-data__action"
+  >
+    <div
+      className="row-data__remove"
+      onClick={undefined}
+    >
+      Delete
+    </div>
+    <a
+      className="row-data__edit"
+      href="//test-row"
+      onClick={[Function]}
+    >
+      Edit
+    </a>
+  </div>
+</div>
+`;
