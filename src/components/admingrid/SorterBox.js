@@ -16,9 +16,7 @@ export class SorterBox extends Component {
   };
 
   applySortAction () {
-    let sortData = {}
-    sortData[this.refs.field] = this.refs.dir
-    this.props.requestApi(sortData)
+    this.props.requestApi({sort: this.refs.field.value, desc: this.refs.dir.value})
   }
 
   render () {
@@ -26,14 +24,14 @@ export class SorterBox extends Component {
     return <div className='sorter-box'>
       {fields.length > 0
         ? <div>
-          <select className='sorter-box__field' value={fields[0].value} ref='field' onChange={this.applySortAction}>
+          <select className='sorter-box__field' ref='field' onChange={this.applySortAction}>
             { fields.map(({value, label}) => {
               return <option value={value} key={value}> {label}</option>
             })}
           </select>
-          <select className='sorter-box__direction' value={1} ref='dir' onChange={this.applySortAction}>
-            <option value={1} >DESC</option>
-            <option value={-1}>ASC</option>
+          <select className='sorter-box__direction' ref='dir' onChange={this.applySortAction}>
+            <option value={'true'} >DESC</option>
+            <option value={'false'}>ASC</option>
           </select>
         </div>
         : ''

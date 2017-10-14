@@ -1,56 +1,39 @@
-import React, {Component} from 'react'
 import {connect} from 'react-redux'
 import {withRouter} from 'react-router-dom'
-import PropTypes from 'prop-types'
-import {DataGrid} from '../../../components/admingrid/DataGrid'
 import {requestTags, removeTag} from '../../../actions/tags/tags'
-import {StaticTag} from '../../../components/general/StaticTag'
-import {Loader} from '../../../components/general/Loader'
-
-export class TagIndex extends Component {
-  static propTypes = {
-    items: PropTypes.array
-  }
-
-  componentDidMount () {
-    this.props.requestTags()
-  }
-
-  render () {
-    return <div>
-      {this.props.error ? <StaticTag className='request-error' staticText={this.props.error} /> : ''}
-      {this.props.isLoading ? <Loader /> : ''}
-      <DataGrid
-        baseUrl={this.props.match.url}
-        items={this.props.items}
-        rowClassName='tag-row'
-        removeAction={this.props.removeAction} />
-    </div>
-  }
-}
+import {push} from 'react-router-redux';
+import {parseQuery, composeQuery} from "../../../utils/request";
+import {GridIndex} from "../../../components/admingrid/GridIndex";
 
 export const mapStateToProps = ({tagReducers}) => {
-  const {isRemoving, removedItem, removeError, tags} = tagReducers
-  const items = !removeError && !isRemoving ? tagReducers.tags.filter(item => {
-    return item.key !== removedItem
-  }) : tags
+  const {tags, error, pagination, isLoading, sortingFields} = tagReducers;
   return {
-    error: removeError || tagReducers.error,
-    isLoading: tagReducers.isLoading,
-    items: items,
-    isRemoving: isRemoving
+    error: error,
+    isLoading: isLoading,
+    items: tags,
+    pagination: pagination,
+    sortingFields: sortingFields ? sortingFields: []
   }
-}
+};
 
-const mapDispatchToProps = dispatch => {
+const mapDispatchToProps = (dispatch, ownProps) => {
+  const parseParams = (paramsOption)=> {
+    const params = parseQuery(ownProps.location.search);
+    paramsOption = paramsOption ? paramsOption: {};
+    return Object.assign({}, params, paramsOption);
+  };
   return {
-    requestTags: (filterParams) => {
-      dispatch(requestTags(filterParams))
+    requestApi: paramsOption => {
+      const paramsData = parseParams(paramsOption);
+      dispatch(requestTags(paramsData));
+      dispatch(push({
+        path: ownProps.match.path,
+        search: composeQuery(paramsData)
+      }));
     },
     removeAction: tagKey => {
       dispatch(removeTag(tagKey))
     }
   }
-}
-
-export default withRouter(connect(mapStateToProps, mapDispatchToProps)(TagIndex))
+};
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(GridIndex))

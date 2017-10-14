@@ -1,10 +1,10 @@
 import {LOAD_TAGS_DONE, LOADING_TAGS, LOAD_TAGS_FAILED, REMOVING_TAG, REMOVE_DONE, REMOVE_FAILED} from './constants'
 import {get, del} from '../../utils/request'
 
-export const requestTags = (sortingOption) => {
+export const requestTags = (options) => {
   return function (dispatch) {
-    dispatch(dataIsLoading(true))
-    return get('tags')
+    dispatch(dataIsLoading(true));
+    return get('tags', options)
       .then(response => {
         dispatch(doneLoading(response))
       })
@@ -18,7 +18,12 @@ export const requestTags = (sortingOption) => {
 }
 
 export const doneLoading = response => {
-  return {type: LOAD_TAGS_DONE, tags: response.tags}
+  return {
+    type: LOAD_TAGS_DONE,
+    tags: response.tags,
+    pagination: response.pagination,
+    sortingFields: convertSorting(response.sortingFields)
+  }
 }
 
 export const loadFailed = () => {
@@ -42,5 +47,18 @@ export const removeTag = tagKey => {
       .catch(() => {
         dispatch({type: REMOVE_FAILED, key: tagKey})
       })
+      .then(()=>{
+        requestTags();
+      })
   }
 }
+
+export const convertSorting  = fields => {
+  return fields.map(field => {
+    return {
+      value: field,
+      label: field.replace(/([A-Z])/g, ' $1')
+      .replace(/^./, function(str){ return str.toUpperCase(); })
+    }
+  })
+};
