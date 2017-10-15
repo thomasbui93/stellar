@@ -26,14 +26,16 @@ export class EditableField extends Component {
       this.setState({
         openEditor: false
       })
-      const updateData = {}
-      updateData[this.props.name] = this.refs.textInput.value
-      this.props.updateAction(updateData)
+      if(this.refs.textInput.value !== this.props.data) {
+        const updateData = {};
+        updateData[this.props.name] = this.refs.textInput.value;
+        this.props.updateAction(updateData);
+      }
     } else {
       this.setState({
         openEditor: true
       }, () => {
-        this.refs.textInput.focus()
+        this.refs.textInput.focus();  
       })
     }
   }

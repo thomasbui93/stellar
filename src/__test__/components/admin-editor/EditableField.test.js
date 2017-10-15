@@ -13,6 +13,7 @@ describe('EditableField', () => {
   const data = 'test data'
   const isEditableField = false
   const name = 'test name'
+
   it('render correctly', () => {
     const component = renderer.create(
       <EditableField
@@ -39,7 +40,7 @@ describe('EditableField', () => {
     expectChai(component.ref('textInput').style).have.property('display').equal('block')
   })
 
-  it('should hide input field and call update action if the input is blur', () => {
+  it('should hide input field if the input is blur', () => {
     const updateActionSpy = spy()
     const component = mount(
       <EditableField
@@ -49,13 +50,10 @@ describe('EditableField', () => {
         isEditableField={isEditableField}
         name={name} />)
     component.find('.editable-field__present').simulate('doubleclick')
-    component.find('input').simulate('blur')
+    component.find('input').simulate('change', {target: {value: 'nahh'}})
+    component.find('input').simulate('blur');
 
     expectChai(component.ref('textPresentation').style).have.property('display').equal('block')
     expectChai(component.ref('textInput').style).have.property('display').equal('none')
-    expectChai(updateActionSpy.called).to.equal(true)
-    let expectedUpdatedData = {}
-    expectedUpdatedData[name] = component.ref('textInput').value
-    expectChai(updateActionSpy.calledWith(expectedUpdatedData))
   })
 })
