@@ -13,7 +13,7 @@ export default function (state = initialState, action) {
         error: false,
         view: action.tag
       }
-    case LOAD_TAG_FAILED: 
+    case LOAD_TAG_FAILED:
       return {
         ...state,
         error: 'Loading Tag Failed'
@@ -22,7 +22,7 @@ export default function (state = initialState, action) {
       return {
         ...state,
         isLoading: action.isLoading
-      }  
+      }
     default:
       return state
   }

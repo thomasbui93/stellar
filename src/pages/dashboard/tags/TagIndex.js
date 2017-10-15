@@ -6,7 +6,7 @@ import {parseQuery, composeQuery} from '../../../utils/request'
 import {GridIndex} from '../../../components/admingrid/GridIndex'
 
 export const mapStateToProps = ({tagReducers}) => {
-  const {tags, error, pagination, isLoading, sortingFields} = tagReducers;
+  const {tags, error, pagination, isLoading, sortingFields} = tagReducers
   return {
     error: error,
     isLoading: isLoading,
@@ -18,14 +18,14 @@ export const mapStateToProps = ({tagReducers}) => {
 
 const mapDispatchToProps = (dispatch, ownProps) => {
   const parseParams = (paramsOption) => {
-    const params = parseQuery(ownProps.location.search);
-    paramsOption = paramsOption || {};
+    const params = parseQuery(ownProps.location.search)
+    paramsOption = paramsOption || {}
     return Object.assign({}, params, paramsOption)
-  };
+  }
   return {
     requestApi: paramsOption => {
-      const paramsData = parseParams(paramsOption);
-      dispatch(requestTags(paramsData));
+      const paramsData = parseParams(paramsOption)
+      dispatch(requestTags(paramsData))
       dispatch(push({
         path: ownProps.match.path,
         search: composeQuery(paramsData)
@@ -35,6 +35,6 @@ const mapDispatchToProps = (dispatch, ownProps) => {
       dispatch(removeTag(tagKey))
     }
   }
-};
+}
 
 export default withRouter(connect(mapStateToProps, mapDispatchToProps)(GridIndex))
