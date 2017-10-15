@@ -1,6 +1,6 @@
 import fetch from 'isomorphic-fetch'
 import {getStorage} from './storage'
-import queryString from 'query-string';
+import queryString from 'query-string'
 
 const headers = {
   'Content-Type': 'application/json',
@@ -23,8 +23,8 @@ export const post = (URL, data) => {
 }
 
 export const get = (URL, params) => {
-  const query = composeQuery(params);
-  URL = query ? `/api/v1/${URL}?${composeQuery(params)}` : `/api/v1/${URL}`;
+  const query = composeQuery(params)
+  URL = query ? `/api/v1/${URL}?${composeQuery(params)}` : `/api/v1/${URL}`
   return fetch(URL, {
     method: 'GET',
     headers: headers
@@ -50,9 +50,8 @@ export const del = (URL) => {
   })
 }
 
-
 export const composeQuery = params => {
-  if (!params) return '';
+  if (!params) return ''
   return Object
     .keys(params)
     .map(k => {
@@ -68,5 +67,5 @@ export const composeQuery = params => {
 }
 
 export const parseQuery = query => {
-  return queryString.parse(query);
-};
+  return queryString.parse(query)
+}

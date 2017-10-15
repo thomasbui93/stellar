@@ -17,9 +17,9 @@ export default function (state = initialState, action) {
         error: false,
         pagination: action.pagination,
         sortingFields: action.sortingFields
-      };
+      }
     case LOADING_TAGS:
-      return {...state, isLoading: action.isLoading};
+      return {...state, isLoading: action.isLoading}
     case LOAD_TAGS_FAILED:
       return {...state, isLoading: false, error: 'Failed fetching tags'}
     case REMOVING_TAG:

@@ -3,7 +3,7 @@ import {get, del} from '../../utils/request'
 
 export const requestTags = (options) => {
   return function (dispatch) {
-    dispatch(dataIsLoading(true));
+    dispatch(dataIsLoading(true))
     return get('tags', options)
       .then(response => {
         dispatch(doneLoading(response))
@@ -15,7 +15,7 @@ export const requestTags = (options) => {
         dispatch(dataIsLoading(false))
       })
   }
-}
+};
 
 export const doneLoading = response => {
   return {
@@ -24,18 +24,18 @@ export const doneLoading = response => {
     pagination: response.pagination,
     sortingFields: convertSorting(response.sortingFields)
   }
-}
+};
 
 export const loadFailed = () => {
   return {type: LOAD_TAGS_FAILED}
-}
+};
 
 export const dataIsLoading = bool => {
   return {
     type: LOADING_TAGS,
     isLoading: bool
   }
-}
+};
 
 export const removeTag = tagKey => {
   return function (dispatch) {
@@ -47,18 +47,18 @@ export const removeTag = tagKey => {
       .catch(() => {
         dispatch({type: REMOVE_FAILED, key: tagKey})
       })
-      .then(()=>{
-        requestTags();
+      .then(() => {
+        requestTags()
       })
   }
-}
+};
 
-export const convertSorting  = fields => {
+export const convertSorting = fields => {
   return fields.map(field => {
     return {
       value: field,
       label: field.replace(/([A-Z])/g, ' $1')
-      .replace(/^./, function(str){ return str.toUpperCase(); })
+      .replace(/^./, function (str) { return str.toUpperCase() })
     }
   })
 };
