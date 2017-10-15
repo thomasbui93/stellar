@@ -16,7 +16,7 @@ export default function (state = initialState, action) {
     case LOAD_TAG_FAILED:
       return {
         ...state,
-        error: 'Loading Tag Failed'
+        error: action.error
       }
     case LOADING_TAG:
       return {

@@ -8,8 +8,8 @@ export const requestTag = (key) => {
       .then(response => {
         dispatch(doneLoadingTag(response))
       })
-      .catch(() => {
-        dispatch(failedLoadingTag())
+      .catch((error) => {
+        dispatch(failedLoadingTag(error))
       })
       .then(() => {
         dispatch(loadingTag(false))
@@ -34,7 +34,7 @@ export const doneLoadingTag = response => {
 export const failedLoadingTag = error => {
   return {
     type: LOAD_TAG_FAILED,
-    error: error
+    error: error.message
   }
 }
 

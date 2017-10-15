@@ -51,7 +51,7 @@ describe('EditableField', () => {
         name={name} />)
     component.find('.editable-field__present').simulate('doubleclick')
     component.find('input').simulate('change', {target: {value: 'nahh'}})
-    component.find('input').simulate('blur');
+    component.find('input').simulate('blur')
 
     expectChai(component.ref('textPresentation').style).have.property('display').equal('block')
     expectChai(component.ref('textInput').style).have.property('display').equal('none')

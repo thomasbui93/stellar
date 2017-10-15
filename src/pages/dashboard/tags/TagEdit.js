@@ -14,7 +14,8 @@ export class TagEdit extends Component {
       PropTypes.string,
       PropTypes.bool
     ]),
-    isLoading: PropTypes.bool
+    isLoading: PropTypes.bool,
+    isEdit: PropTypes.bool
   }
 
   componentDidMount () {
