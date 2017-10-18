@@ -5,8 +5,10 @@ import {PublicNavigation} from './PublicNavigation'
 
 export class Navigation extends Component {
   render () {
-    return <div className='app-navigation'>
-      { isAuth() ? <PrivateNavigation /> : <PublicNavigation /> }
+    return <div className="container">
+      <div className='app-navigation'>
+        { isAuth() ? <PrivateNavigation /> : <PublicNavigation /> }
+      </div>
     </div>
   }
 }

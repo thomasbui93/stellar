@@ -5,18 +5,20 @@ import LoginPage from './pages/auth/LoginPage'
 import {About} from './pages/misc/About'
 import {NotFoundPage} from './pages/misc/NotFoundPage'
 import {Dashboard} from './pages/dashboard/DashboardIndex'
-import './styles/index.sass'
+import './styles/index.scss'
 
 const App = () => (
   <BrowserRouter>
     <div className='public-app'>
       <Navigation />
-      <Switch>
-        <Route exact path='/login' component={LoginPage} />
-        <Route exact path='/about' component={About} />
-        <Route path='/dashboard' component={Dashboard} />
-        <Route component={NotFoundPage} />
-      </Switch>
+      <div className='container'>
+        <Switch>
+          <Route exact path='/login' component={LoginPage} />
+          <Route exact path='/about' component={About} />
+          <Route path='/dashboard' component={Dashboard} />
+          <Route component={NotFoundPage} />
+        </Switch>
+      </div>
     </div>
   </BrowserRouter>
 )

@@ -42,7 +42,7 @@ export class GridIndex extends Component {
 
     return <div className={this.props.className}>
       <div className='messages'>
-        {error ? <StaticTag className='request-error' staticText={error} /> : ''}
+        {error ? <StaticTag className='notification is-warning' staticText={error} /> : ''}
       </div>
       <div className='filter-box'>
         <SearchBox requestApi={requestApi} />

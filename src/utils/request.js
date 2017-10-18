@@ -16,7 +16,7 @@ export const post = (URL, data) => {
   }).then(response => {
     if (response.status > 500) {
       throw new Error(`Unexpected happened ${response.statusText}`)
-    } else if(response.status > 400) {
+    } else if (response.status > 400) {
       throw new Error(response.statusText)
     } else {
       return response.json()
@@ -33,7 +33,7 @@ export const get = (URL, params) => {
   }).then(response => {
     if (response.status > 500) {
       throw new Error(`Unexpected happened ${response.statusText}`)
-    } else if(response.status > 400) {
+    } else if (response.status > 400) {
       throw new Error(response.statusText)
     } else {
       return response.json()

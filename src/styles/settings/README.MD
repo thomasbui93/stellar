@@ -1,0 +1,3 @@
+## Settings
+- Contains of configuration variables for the projects: colors, height, width, etc...
+- Entry points: `_main.css`
