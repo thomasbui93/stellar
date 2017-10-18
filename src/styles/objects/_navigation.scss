@@ -1,0 +1,22 @@
+.app-navigation {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  background-color: $color-primary;
+  height: $navigation-height;
+  font-family: $font-family-alt;
+  color: white;
+}
+
+.navbar {
+  display: flex;
+  &-item {
+    color: white;
+    margin: 0 1rem;
+    line-height: $navigation-height;
+    &:visited,
+    &:focus {
+      color: white;
+    }
+  }
+}

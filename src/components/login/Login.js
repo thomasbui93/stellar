@@ -18,7 +18,7 @@ export class Login extends Component {
   }
 
   render () {
-    return <form className='login-form' onSubmit={this.submit}>
+    return <form className={`login-form ${this.props.className}`} onSubmit={this.submit}>
       <div className='field'>
         <label className='label'>Email</label>
         <div className='control'>
@@ -31,7 +31,7 @@ export class Login extends Component {
           <input className='input' type='password' ref='password' />
         </div>
       </div>
-      <div className='control'>
+      <div className='control button-groups'>
         <button className='button is-primary' type='submit' disabled={this.props.isLoading}>Submit</button>
       </div>
     </form>

@@ -15,9 +15,9 @@ export class LoginPage extends Component {
   }
 
   render () {
-    return <div className='login-page'>
+    return <div className='login-page page'>
       {this.props.error ? <StaticTag className='error-tag' staticText={this.props.error} /> : ''}
-      <Login onSubmit={this.props.onSubmit} isLoading={this.props.isLoading} />
+      <Login onSubmit={this.props.onSubmit} isLoading={this.props.isLoading} className='center'/>
     </div>
   }
 }

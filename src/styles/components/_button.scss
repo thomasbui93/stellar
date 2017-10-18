@@ -32,4 +32,11 @@
   &.is-h-danger {
     @include button-hover($color-danger, $color-danger-emphasize);
   }
+
+  &.is-link {
+    border: none;
+    background-color: transparent;
+    color: $font-color-primary;
+    height: auto;
+  }
 }

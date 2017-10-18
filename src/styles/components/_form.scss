@@ -3,15 +3,18 @@ textarea,
 select {
   @include regularize-form();
   border: 1px solid $form-border-color;
-  max-width: $form-input-max-width;
+}
+
+input,
+textarea {
   width: 100%;
 }
-
-select {
-
+form {
+  max-width: $form-input-max-width;
 }
 
-.field {
+.field,
+.button-groups {
   margin: .5rem;
   
   .label {
@@ -22,4 +25,9 @@ select {
   .control {
     margin: 1rem 0;
   }
+}
+
+.button-groups {
+  display: flex;
+  justify-content: flex-end;
 }

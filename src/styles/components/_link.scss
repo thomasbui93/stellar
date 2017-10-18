@@ -6,3 +6,14 @@ a,
     color: $color-primary-emphasize;
   }
 }
+
+.action {
+  cursor: pointer;
+  &.danger {
+    color: $color-danger;
+  }
+
+  &.warning {
+    color: $color-warning;
+  }
+}
