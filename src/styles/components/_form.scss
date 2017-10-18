@@ -1,0 +1,25 @@
+input,
+textarea,
+select {
+  @include regularize-form();
+  border: 1px solid $form-border-color;
+  max-width: $form-input-max-width;
+  width: 100%;
+}
+
+select {
+
+}
+
+.field {
+  margin: .5rem;
+  
+  .label {
+    margin: 1rem 0;
+    font-size: 16px;
+  }
+
+  .control {
+    margin: 1rem 0;
+  }
+}

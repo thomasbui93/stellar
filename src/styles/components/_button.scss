@@ -1,0 +1,35 @@
+/* =======================================================================
+   #BUTTONS
+========================================================================== */
+
+.button {
+  @include regularize-form();
+  cursor: pointer;
+  color: $font-color-primary;
+  background-color: #fff;
+  border: 1px solid $form-border-color;
+
+  &.is-primary {
+    @include button-float($color-primary, $color-primary-emphasize);
+  }
+
+  &.is-safe {
+    @include button-float($color-safe, $color-safe-emphasize);
+  }
+
+  &.is-danger {
+    @include button-float($color-danger, $color-danger-emphasize);
+  }
+
+  &.is-h-primary {
+    @include button-hover($color-primary, $color-primary-emphasize);
+  }
+
+  &.is-h-safe {
+    @include button-hover($color-safe, $color-safe-emphasize);
+  }
+
+  &.is-h-danger {
+    @include button-hover($color-danger, $color-danger-emphasize);
+  }
+}

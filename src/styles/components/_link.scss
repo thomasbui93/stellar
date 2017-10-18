@@ -1,0 +1,8 @@
+a,
+.link {
+  text-decoration: none;
+  color: $color-primary;
+  &:visited {
+    color: $color-primary-emphasize;
+  }
+}

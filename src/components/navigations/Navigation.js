@@ -5,7 +5,7 @@ import {PublicNavigation} from './PublicNavigation'
 
 export class Navigation extends Component {
   render () {
-    return <div className="container">
+    return <div className='container'>
       <div className='app-navigation'>
         { isAuth() ? <PrivateNavigation /> : <PublicNavigation /> }
       </div>

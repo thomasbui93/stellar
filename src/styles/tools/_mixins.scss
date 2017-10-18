@@ -1,0 +1,55 @@
+@mixin regularize-form {
+  -moz-appearance: none;
+  -webkit-appearance: none;
+  align-items: center;
+  border-radius: $form-element-radius;
+  box-shadow: none;
+  display: inline-flex;
+  font-size: $font-size-normal;
+  height: 2.25em;
+  justify-content: flex-start;
+  line-height: 1.5;
+  padding-left: $form-element-padding-horizontal;
+  padding-right: $form-element-padding-horizontal;
+  position: relative;
+  vertical-align: top;
+  // States
+  &:focus,
+  &.is-focused,
+  &:active,
+  &.is-active{
+    outline: none
+  }
+    
+  &[disabled]{  
+    cursor: not-allowed;
+    box-shadow: none;
+  }
+}
+
+@mixin button-float ($primary, $emphasize) {
+  background: linear-gradient(to bottom, $emphasize 0, $primary 100%);
+  color: white;
+  border-color: transparent;
+  box-shadow: 0 1px 0 darken($emphasize, 20%);
+  &:active {
+    background: linear-gradient(to bottom, darken($emphasize, 10%) 0, $emphasize 100%);
+  }
+}
+
+@mixin button-hover ($color, $hover: darken($color, 10%)) {
+  background-color: $color;
+  color: white;
+  border: 1px solid $color;
+  transition: background-color 0.5s ease-in-out, border 0.5 ease-in-out;
+  &:hover {
+    background-color: $hover;
+    border: $hover;
+  }
+}
+
+@mixin message($color) {
+  border: 1px solid lighten($color, 30%);
+  color:$color;
+  background-color: lighten($color, 50%);
+}
