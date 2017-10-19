@@ -1,0 +1,28 @@
+@keyframes spin {
+    0% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(360deg);
+    }
+}
+
+.loader {
+    border-radius: 50%;
+    width: 24px;
+    height: 24px;
+    border: .25rem solid lighten($color-primary, 20%);
+    border-top-color: $color-primary;
+    animation: spin 1s infinite linear;
+    position: relative;
+    display: block;
+    margin: 5px auto;
+}
+
+.app-loader {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin: 5px auto;
+}

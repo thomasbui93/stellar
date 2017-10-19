@@ -29,8 +29,8 @@ export class SearchBox extends Component {
     return <form className={`search-box ${this.props.className ? this.props.className : ''}`}
       onSubmit={this.submitAction}>
       <input placeholder='Enter your search here' type='text' ref='query' />
-      <button type='submit'>Search</button>
-      <button type='button' onClick={this.clearSearch}>
+      <button type='submit' className='button'>Search</button>
+      <button type='button' onClick={this.clearSearch} className='button'>
         Clear
       </button>
     </form>

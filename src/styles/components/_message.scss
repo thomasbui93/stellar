@@ -1,7 +1,7 @@
 .messages {
   display: flex;
   flex-direction: column;
-  padding: .5rem;
+  padding: .5rem 0;
 }
 
 .message {
@@ -9,11 +9,11 @@
   padding: 0.5rem;
   @include message($color-primary);
 
-  &.error {
+  &.is-error {
     @include message($color-danger);
   }
 
-  &.warning {
+  &.is-warning {
     @include message($color-warning);
   }
 }

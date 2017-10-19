@@ -8,6 +8,7 @@
   color: $font-color-primary;
   background-color: #fff;
   border: 1px solid $form-border-color;
+  margin: 0 0.5rem;
 
   &.is-primary {
     @include button-float($color-primary, $color-primary-emphasize);
