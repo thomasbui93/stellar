@@ -1,8 +1,15 @@
 import React from 'react'
+import { Spinner, Card } from 'belle'
 
-export const Loader = () => {
-  return <div className='app-loader'>
-    <div className='loader' />
-    <div className='loader-text'>Loading...</div>
-  </div>
+export default () => {
+  return (
+    <Card
+      style={{ fontSize: 20,
+        color: '#666',
+        textAlign: 'center',
+        border: 'none'
+      }}>
+    Loading <Spinner characterStyle={{ fontSize: 20 }} />
+    </Card>
+  )
 }

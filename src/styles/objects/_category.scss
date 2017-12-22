@@ -1,0 +1,26 @@
+.category-item {
+  display: flex;
+  justify-content: space-between;
+  line-height: 50px;
+  border-bottom: 1px solid;
+
+  &__actions {
+    display: flex;
+    flex-direction: row;
+
+    & > div {
+      display: flex;
+      justify-content: center;
+      flex-direction: column;
+      margin: 0 0.5rem;
+    }
+  }
+
+  &__editor {
+    width: 100%;
+
+    input {
+      margin-top: 5px;
+    }
+  }
+}

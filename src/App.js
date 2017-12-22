@@ -1,22 +1,22 @@
 import React from 'react'
-import {Route, Switch, BrowserRouter} from 'react-router-dom'
-import {Navigation} from './components/navigations/Navigation'
-import LoginPage from './pages/auth/LoginPage'
-import {About} from './pages/misc/About'
-import {NotFoundPage} from './pages/misc/NotFoundPage'
-import {Dashboard} from './pages/dashboard/DashboardIndex'
+import { Route, Switch, BrowserRouter } from 'react-router-dom'
+import Sidebar from './components/layout/Sidebar'
+import CategoryPage from './pages/category/CategoryPage'
+import CategoryListPage from './pages/category/CategoryListPage'
+import NotePage from './pages/note/NotePage'
+import NoteNewPage from './pages/note/NoteNewPage'
 import './styles/index.scss'
 
 const App = () => (
   <BrowserRouter>
-    <div className='public-app'>
-      <Navigation />
-      <div className='container'>
+    <div className='stellar-application' >
+      <Sidebar />
+      <div className='main-content'>
         <Switch>
-          <Route exact path='/login' component={LoginPage} />
-          <Route exact path='/about' component={About} />
-          <Route path='/dashboard' component={Dashboard} />
-          <Route component={NotFoundPage} />
+          <Route exact path='/categories' component={CategoryListPage} />
+          <Route exact path='/categories/:categoryId' component={CategoryPage} />
+          <Route exact path='/notes/:noteId' component={NotePage} />
+          <Route exact path='/note-new/:categoryId' component={NoteNewPage} />
         </Switch>
       </div>
     </div>

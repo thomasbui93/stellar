@@ -31,7 +31,6 @@
   background: linear-gradient(to bottom, $emphasize 0, $primary 100%);
   color: white;
   border-color: transparent;
-  box-shadow: 0 1px 0 darken($emphasize, 20%);
   &:active {
     background: linear-gradient(to bottom, darken($emphasize, 10%) 0, $emphasize 100%);
   }
@@ -41,10 +40,10 @@
   background-color: $color;
   color: white;
   border: 1px solid $color;
-  transition: background-color 0.5s ease-in-out, border 0.5 ease-in-out;
+  transition: background-color 0.5s ease-in-out, border 0.5s ease-in-out;
   &:hover {
     background-color: $hover;
-    border: $hover;
+    border: 1px solid $hover;
   }
 }
 

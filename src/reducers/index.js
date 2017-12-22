@@ -1,12 +1,20 @@
 import { combineReducers } from 'redux'
 import { routerReducer } from 'react-router-redux'
-import authReducers from './auth-reducers'
-import tagReducers from './tag-reducers'
-import tagViewReducers from './tag-review-reducer'
+import categoryList from './category/list'
+import categoryRemoval from './category/removal'
+import categoryUpdate from './category/update'
+import categoryCreate from './category/create'
+import categoryView from './category/view'
+import noteView from './note/view'
+import noteSave from './note/save'
 
 export default combineReducers({
   router: routerReducer,
-  authReducers: authReducers,
-  tagReducers: tagReducers,
-  tagViewReducer: tagViewReducers
+  categoryList: categoryList,
+  categoryRemoval: categoryRemoval,
+  categoryUpdate: categoryUpdate,
+  categoryCreate: categoryCreate,
+  categoryView: categoryView,
+  noteView: noteView,
+  noteSave: noteSave
 })

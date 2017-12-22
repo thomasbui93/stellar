@@ -1,7 +1,7 @@
-.filter-box {
-  display: flex;
-  justify-content: center;
-}
-.search-box {
-  display: flex;
+.inline-editor {
+  display: flex; 
+  margin: 1rem 0;
+  &__input{
+    width: 100%
+  }
 }
