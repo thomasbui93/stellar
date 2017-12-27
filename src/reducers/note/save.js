@@ -24,7 +24,7 @@ export default (state = initialState, action) => {
     case NOTE_SAVING_VIEW:
       return {
         ...state,
-        isLoading: action.isLoading
+        isSaving: action.isSaving
       }
     default:
       return state

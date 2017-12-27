@@ -1,5 +1,5 @@
 import 'whatwg-fetch'
-import { getToken } from '../auth';
+import { getToken } from '../auth'
 
 export default class RemoteFetch {
   find (entityType, query) {
@@ -49,9 +49,9 @@ export default class RemoteFetch {
     }
 
     const config = Object.assign({}, baseConfig, data)
-    return fetch(URL, config)
+    return window.fetch(URL, config)
     .then(function (response) {
-      if(!response.ok) {
+      if (!response.ok) {
         return Promise.reject({
           status: response.status,
           statusText: response.statusText
@@ -74,7 +74,7 @@ export default class RemoteFetch {
       })
     })
     .then(response => {
-      if(!response.ok) {
+      if (!response.ok) {
         return Promise.reject(response.statusText)
       }
       return response.json()

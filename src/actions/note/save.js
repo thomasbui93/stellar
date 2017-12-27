@@ -1,7 +1,8 @@
 import {
   NOTE_SAVING_VIEW,
   NOTE_SAVING_VIEW_DONE,
-  NOTE_SAVING_VIEW_FAILED
+  NOTE_SAVING_VIEW_FAILED,
+  NOTE_REMOVING_DONE
 } from './constants'
 
 import NoteRepository from '../../utils/noteRepository'
@@ -12,8 +13,8 @@ const noteRepository = new NoteRepository(remoteFetch)
 export const saveNote = (note) => {
   return dispatch => {
     dispatch(isSavingNote(true))
-    return note.key ? 
-    noteRepository
+    return note.key
+    ? noteRepository
     .update(note)
     .then(view => {
       dispatch(saveNoteDone(view))
@@ -23,8 +24,8 @@ export const saveNote = (note) => {
     })
     .then(() => {
       dispatch(isSavingNote(false))
-    }) :
-    noteRepository
+    })
+    : noteRepository
     .insert(note)
     .then(view => {
       dispatch(saveNoteDone(view))
@@ -58,3 +59,29 @@ export const saveNoteFailed = err => {
     error: err
   }
 }
+
+
+export const requestRemoveNote = id => {
+  return dispatch => {
+    dispatch(isSavingNote(true))
+    return noteRepository
+    .remove(id)
+    .then(() => {
+      dispatch(removingDone())
+    })
+    .catch(err => {
+      dispatch(saveNoteFailed(err))
+    })
+    .then(() => {
+      dispatch(isSavingNote(false))
+    })
+  }
+}
+
+export const removingDone = () => {
+  return {
+    type: NOTE_REMOVING_DONE,
+    isRemoved: true
+  }
+}
+

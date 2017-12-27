@@ -1,4 +1,4 @@
-const AUTH_TOKEN_ITEM = 'authToken';
+const AUTH_TOKEN_ITEM = 'authToken'
 
 export const saveToken = token => {
   return window.localStorage.setItem(AUTH_TOKEN_ITEM, token)

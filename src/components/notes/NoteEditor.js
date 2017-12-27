@@ -26,7 +26,8 @@ export default class NoteEditor extends React.Component {
   }
   static propTypes = {
     content: PropTypes.string.isRequired,
-    saveNoteAction: PropTypes.func.isRequired
+    saveNoteAction: PropTypes.func.isRequired,
+    isSaving: PropTypes.bool
   }
 
   state = {
@@ -101,7 +102,7 @@ export default class NoteEditor extends React.Component {
             onToggle={this.toggleInlineStyle}
           />
           <button onClick={this.saveNoteAction} className='button is-primary'>
-            Save
+            { !this.props.isSaving ? 'Save': 'Saving' }
           </button>
         </div>
         <div className={className} onClick={this.focus}>

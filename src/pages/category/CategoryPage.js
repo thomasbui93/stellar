@@ -30,9 +30,13 @@ export class CategoryPage extends React.Component {
     const currentPage = parsedParams['page'] ? parseInt(parsedParams['page'], 0) : 1
     return (
       <div className='page-wrapper'>
-        <h1>{ this.props.notebook ? this.props.notebook.title : '' }</h1>
-        <Link to={`/note-new/${this.props.match.params.categoryId}`}>Create Note</Link>
-        <div className='note-list'>
+        <div className='page-header'>
+          <h1>{ this.props.notebook ? this.props.notebook.title : '' }</h1>
+          <Link className="button is-h-primary" to={`/note-new/${this.props.match.params.categoryId}`}>
+            Add New Note
+          </Link>
+        </div>
+        <div className='note-list card-thumb-grid'>
           {
           this.props.notes.length > 0
           ? this.props.notes.map(note => {

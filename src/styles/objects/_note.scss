@@ -4,4 +4,39 @@
   .page-tags {
     width: 100%;
   }
+
+  .page-meta {
+    
+    a {
+      display: block;
+    }
+
+    button {
+      margin-top: 10px;
+      display: block;
+      float: right;
+    }
+  }
+}
+
+.note-item {
+  &__title {
+    font-weight: bold;
+    color: $color-primary;
+  }
+
+  &__date {
+    color: #cccccc;
+    font-size: .9rem;
+    margin: 5px 0;
+  }
+
+  &__excerpt {
+    max-height: 50px;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    font-size: 14px;
+  }
 }

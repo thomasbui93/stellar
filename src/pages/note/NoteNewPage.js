@@ -8,22 +8,22 @@ import { requestNotebook } from './../../actions/note/new'
 import AuthenticatedRoute from './../../components/layout/AuthenticatedRoute'
 
 export class NoteNewPage extends React.Component {
-  constructor(props){
+  constructor (props) {
     super(props)
     this.saveNoteAction = this.saveNoteAction.bind(this)
   }
 
-  componentDidMount() {
-    this.props.requestNotebook(this.props.match.params.categoryId);
+  componentDidMount () {
+    this.props.requestNotebook(this.props.match.params.categoryId)
   }
 
-  componentWillUpdate(nextProps) {
-    if(nextProps.note) {
+  componentWillUpdate (nextProps) {
+    if (nextProps.note) {
       return this.props.history.push(`/notes/${nextProps.note.key}`)
     }
   }
 
-  saveNoteAction(noteData) {
+  saveNoteAction (noteData) {
     return this.props.saveNoteAction({
       ...noteData,
       notebook: this.props.notebook.key,
@@ -33,15 +33,18 @@ export class NoteNewPage extends React.Component {
 
   render () {
     return (
-      <div>
-        <div className='category-editor'>
-          { this.props.notebook ? <CategorySelector notebook={this.props.notebook}/> : '' }
+      <div className='page-wrapper'>
+        <div className='page-header'>
+          <h1> New Note </h1>
+          <div className='category-editor'>
+            { this.props.notebook ? <CategorySelector notebook={this.props.notebook} /> : '' }
+          </div>
         </div>
-        <div>
-          <input type="text" ref="title" />
+        <div className='title-editor'>
+          <input type='text' ref='title' placeholder='Enter your title here' />
         </div>
         <div className='content-editor'>
-          <NoteEditor content='' saveNoteAction={this.saveNoteAction}/>
+          <NoteEditor content='' saveNoteAction={this.saveNoteAction} />
         </div>
       </div>
     )
@@ -61,7 +64,7 @@ const mapDispatchToProps = (dispatch, ownProps) => {
       dispatch(saveNote(noteData))
     },
     requestNotebook: notebookId => {
-      dispatch(requestNotebook(notebookId));
+      dispatch(requestNotebook(notebookId))
     }
   }
 }

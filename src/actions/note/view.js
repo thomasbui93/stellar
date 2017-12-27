@@ -43,6 +43,7 @@ export const requestNoteViewDone = view => {
 export const requestNoteViewFailed = err => {
   return {
     type: NOTE_REQUESTING_VIEW_FAILED,
-    view: err
+    error: err
   }
 }
+

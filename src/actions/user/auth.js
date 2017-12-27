@@ -28,7 +28,7 @@ export const requestingAuthentication = isLoading => {
   return {
     type: USER_REQUEST_AUTHENTICATION,
     isLoading: isLoading
-  } 
+  }
 }
 
 export const requestAuthenticationDone = token => {

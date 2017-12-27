@@ -10,12 +10,12 @@ export default class CategorySelector extends React.Component {
     }).isRequired
   }
 
-  render() {
+  render () {
     return (
       <div>
-        { 
-          this.props.notebook ?
-            <Link to={`/categories/${this.props.notebook.key}`}>Back To {this.props.notebook.title}</Link> : ''
+        {
+          this.props.notebook
+            ? <Link to={`/categories/${this.props.notebook.key}`}>Back To {this.props.notebook.title}</Link> : ''
         }
       </div>
     )

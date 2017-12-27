@@ -52,7 +52,6 @@ position: relative;
   }
 
   .page-wrapper {
-    background: white;
     padding: 1rem;
     min-height: calc( 100vh - 2rem );
   }
@@ -61,5 +60,11 @@ position: relative;
     display: flex;
     justify-content: space-between;
     margin: 0 0 2rem 0;
+    background-color: white;
+    padding: 1rem;
+
+    h1 {
+      font-weight: 200;
+    }
   }
 }

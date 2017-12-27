@@ -2,7 +2,8 @@
   display: flex;
   justify-content: space-between;
   line-height: 50px;
-  border-bottom: 1px solid;
+  border-bottom: 1px solid #ccc;
+  padding-left: 1rem;
 
   &__actions {
     display: flex;
@@ -23,4 +24,15 @@
       margin-top: 5px;
     }
   }
+}
+
+.category-list {
+  background-color: white;
+}
+
+.category-editor {
+  padding: 1rem 0px;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
 }

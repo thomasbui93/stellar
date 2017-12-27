@@ -5,42 +5,45 @@ import { clearToken, getToken } from '../../utils/auth'
 
 export default ComponentPage => {
   return class AuthenticatedRoute extends ComponentPage {
-    componentWillReceiveProps(nextProps) {
-      if(nextProps.error && nextProps.error.status === 401) {
+    componentWillReceiveProps (nextProps) {
+      if (nextProps.error && nextProps.error.status === 401) {
         clearToken()
         this.props.history.push('/')
       }
+      if(nextProps.error && nextProps.error.status === 404) {
+        this.props.history.push('/not-found')
+      }
     }
 
-    render() {
+    render () {
       const { error } = this.props
-      return ( !error || error.status !== 401 ) ? super.render() : <Notice type="error" message="Unauthorized request. Redirecting ..."/>
+      return (!error || error.status !== 401) ? super.render() : <Notice type='error' message='Unauthorized request. Redirecting ...' />
     }
   }
 }
 
 export const PrivateRoute = ({ component: Component, ...rest }) => {
-   return <Route {...rest} render={props => (
+  return <Route {...rest} render={props => (
     getToken() ? (
-      <Component {...props}/>
+      <Component {...props} />
     ) : (
       <Redirect to={{
         pathname: '/',
         state: { from: props.location }
-      }}/>
+      }} />
     )
-  )}/>
+  )} />
 }
 
 export const EntryRoute = ({ component: Component, ...rest }) => {
   return <Route {...rest} render={props => (
    getToken() ? (
      <Redirect to={{
-      pathname: '/categories',
-      state: { from: props.location }
-    }}/>
+       pathname: '/categories',
+       state: { from: props.location }
+     }} />
    ) : (
-    <Component {...props}/>
+     <Component {...props} />
    )
- )}/>
+ )} />
 }
