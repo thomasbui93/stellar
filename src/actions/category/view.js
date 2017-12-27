@@ -4,10 +4,7 @@ import {
   CATEGORY_REQUESTING_VIEW_FAILED
 } from './constants'
 
-import CategoryRepository from '../../utils/categoryRepository'
-import RemoteFetch from '../../utils/adapter/remoteFetch'
-const remoteFetch = new RemoteFetch()
-const categoryRepository = new CategoryRepository(remoteFetch)
+import categoryRepository from '../../utils/categoryRepository'
 
 export const requestCategoryView = (id, params) => {
   return dispatch => {
@@ -46,4 +43,3 @@ export const requestCategoryViewFailed = err => {
     view: err
   }
 }
-

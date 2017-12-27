@@ -52,6 +52,7 @@ export default class RemoteFetch {
     return window.fetch(URL, config)
     .then(function (response) {
       if (!response.ok) {
+        // eslint-disable-next-line
         return Promise.reject({
           status: response.status,
           statusText: response.statusText

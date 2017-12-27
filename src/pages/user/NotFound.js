@@ -9,7 +9,7 @@ export default () => {
       textAlign: 'center',
       border: 'none'
     }}>
-      Your request can not be found here. <br/> 
+      Your request can not be found here. <br />
       Please return to home page at <Link to='/'>here</Link>.
     </Card>
   )

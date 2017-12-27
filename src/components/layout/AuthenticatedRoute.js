@@ -10,7 +10,7 @@ export default ComponentPage => {
         clearToken()
         this.props.history.push('/')
       }
-      if(nextProps.error && nextProps.error.status === 404) {
+      if (nextProps.error && nextProps.error.status === 404) {
         this.props.history.push('/not-found')
       }
     }
@@ -25,7 +25,7 @@ export default ComponentPage => {
 export const PrivateRoute = ({ component: Component, ...rest }) => {
   return <Route {...rest} render={props => (
     getToken() ? (
-      <Component {...props} />
+      <Component {...props} {...rest} />
     ) : (
       <Redirect to={{
         pathname: '/',
@@ -43,7 +43,7 @@ export const EntryRoute = ({ component: Component, ...rest }) => {
        state: { from: props.location }
      }} />
    ) : (
-     <Component {...props} />
+     <Component {...props} {...rest} />
    )
  )} />
 }

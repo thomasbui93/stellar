@@ -1,4 +1,6 @@
-export default class NoteRepository {
+import RemoteFetch from './adapter/remoteFetch'
+
+export class NoteRepository {
   adapter;
 
   constructor (adapter) {
@@ -25,3 +27,5 @@ export default class NoteRepository {
     return this.adapter.insert('note', noteItem)
   }
 }
+
+export default new NoteRepository(new RemoteFetch())

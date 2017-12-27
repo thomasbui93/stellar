@@ -1,3 +1,5 @@
+import 'webstorage-polyfill'
+
 const AUTH_TOKEN_ITEM = 'authToken'
 
 export const saveToken = token => {

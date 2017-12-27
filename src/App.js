@@ -22,7 +22,7 @@ const App = () => (
           <PrivateRoute exact path='/categories/:categoryId' component={CategoryPage} />
           <PrivateRoute exact path='/notes/:noteId' component={NotePage} />
           <PrivateRoute exact path='/note-new/:categoryId' component={NoteNewPage} />
-          <LogoutPage exact path='/logout' component={LoginPage} />
+          <LogoutPage exact path='/logout' component={LogoutPage} />
           <Route exact path='/not-found' component={NotFound} />
           <Route component={NotFound} />
         </Switch>

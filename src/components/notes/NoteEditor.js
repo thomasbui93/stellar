@@ -102,7 +102,7 @@ export default class NoteEditor extends React.Component {
             onToggle={this.toggleInlineStyle}
           />
           <button onClick={this.saveNoteAction} className='button is-primary'>
-            { !this.props.isSaving ? 'Save': 'Saving' }
+            { !this.props.isSaving ? 'Save' : 'Saving' }
           </button>
         </div>
         <div className={className} onClick={this.focus}>

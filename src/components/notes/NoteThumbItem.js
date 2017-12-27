@@ -18,7 +18,7 @@ export default class NoteThumbItem extends React.Component {
         <div className='card-thumb__content'>
           <div className='note-item__title'>{this.props.note.title}</div>
           <div className='note-item__date'>
-            { `${updatedDate.getDate()}.${updatedDate.getMonth() + 1 }.${updatedDate.getFullYear()}`}
+            { `${updatedDate.getDate()}.${updatedDate.getMonth() + 1}.${updatedDate.getFullYear()}`}
           </div>
           <div className='note-item__excerpt'>{this.props.note.excerpt}</div>
         </div>

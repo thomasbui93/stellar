@@ -1,4 +1,6 @@
-export default class CategoryRepository {
+import RemoteFetch from './adapter/remoteFetch'
+
+export class CategoryRepository {
   adapter;
 
   constructor (adapter) {
@@ -25,3 +27,5 @@ export default class CategoryRepository {
     return this.adapter.insert('category', categoryItem)
   }
 }
+
+export default new CategoryRepository(new RemoteFetch())

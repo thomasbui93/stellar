@@ -29,8 +29,8 @@ export class NotePage extends React.Component {
     this.props.requestView()
   }
 
-  componentDidUpdate(prevProps) {
-    if(prevProps.isRemoved) {
+  componentDidUpdate (prevProps) {
+    if (prevProps.isRemoved) {
       this.props.history.push(`/categories/${this.props.notebook.key}`)
     }
   }
@@ -62,12 +62,12 @@ export class NotePage extends React.Component {
               </div>
             </div>
             <div className='content-editor'>
-              { 
-                this.props.content ? 
-                <NoteEditor 
+              {
+                this.props.content
+                ? <NoteEditor
                   isSaving={this.props.isSaving}
-                  content={this.props.content} 
-                  saveNoteAction={this.props.saveNote} /> : '' 
+                  content={this.props.content}
+                  saveNoteAction={this.props.saveNote} /> : ''
               }
             </div>
           </div>
@@ -105,7 +105,7 @@ const mapDispatchToProps = (dispatch, ownProps) => {
       dispatch(saveNote(note))
     },
     removeNote: () => {
-      dispatch(requestRemoveNote(ownProps.match.params.noteId));
+      dispatch(requestRemoveNote(ownProps.match.params.noteId))
     }
   }
 }

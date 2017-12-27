@@ -5,10 +5,7 @@ import {
   NOTE_REMOVING_DONE
 } from './constants'
 
-import NoteRepository from '../../utils/noteRepository'
-import RemoteFetch from '../../utils/adapter/remoteFetch'
-const remoteFetch = new RemoteFetch()
-const noteRepository = new NoteRepository(remoteFetch)
+import noteRepository from '../../utils/noteRepository'
 
 export const saveNote = (note) => {
   return dispatch => {
@@ -60,7 +57,6 @@ export const saveNoteFailed = err => {
   }
 }
 
-
 export const requestRemoveNote = id => {
   return dispatch => {
     dispatch(isSavingNote(true))
@@ -84,4 +80,3 @@ export const removingDone = () => {
     isRemoved: true
   }
 }
-

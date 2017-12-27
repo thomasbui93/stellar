@@ -4,10 +4,7 @@ import {
   NOTE_REQUESTING_VIEW_FAILED
 } from './constants'
 
-import NoteRepository from '../../utils/noteRepository'
-import RemoteFetch from '../../utils/adapter/remoteFetch'
-const remoteFetch = new RemoteFetch()
-const noteRepository = new NoteRepository(remoteFetch)
+import noteRepository from '../../utils/noteRepository'
 
 export const requestNoteView = (id) => {
   return dispatch => {
@@ -46,4 +43,3 @@ export const requestNoteViewFailed = err => {
     error: err
   }
 }
-

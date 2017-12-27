@@ -4,10 +4,7 @@ import {
   NOTE_NEW_LOAD_NOTEBOOK_FAILED
 } from './constants'
 
-import CategoryRepository from '../../utils/categoryRepository'
-import RemoteFetch from '../../utils/adapter/remoteFetch'
-const remoteFetch = new RemoteFetch()
-const categoryRepository = new CategoryRepository(remoteFetch)
+import categoryRepository from '../../utils/categoryRepository'
 
 export const requestNotebook = (id) => {
   return dispatch => {

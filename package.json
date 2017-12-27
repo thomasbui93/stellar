@@ -59,12 +59,13 @@
     "webpack": "3.5.1",
     "webpack-dev-server": "2.7.1",
     "webpack-manifest-plugin": "1.2.1",
+    "webstorage-polyfill": "^1.0.1",
     "whatwg-fetch": "^2.0.3"
   },
   "scripts": {
     "start": "node scripts/start.js",
     "build": "node scripts/build.js",
-    "test": "node scripts/test.js --env=jsdom",
+    "test": "cross-env CI=true node scripts/test.js --env=jsdom",
     "linter": "standard 'src/**/*.js' --fix",
     "precommit": "npm run linter",
     "prepush": "cross-env CI=true node scripts/test.js --env=jsdom"
@@ -75,7 +76,8 @@
     ],
     "setupFiles": [
       "<rootDir>/config/polyfills.js",
-      "<rootDir>/config/jest/setup.js"
+      "<rootDir>/config/jest/setup.js",
+      "jest-localstorage-mock"
     ],
     "testMatch": [
       "<rootDir>/src/**/__tests__/**/*.js?(x)",
@@ -115,6 +117,7 @@
     "chai": "^4.1.2",
     "enzyme-adapter-react-15": "^1.0.1",
     "husky": "^0.14.3",
+    "jest-localstorage-mock": "^2.1.0",
     "node-sass": "^4.5.3",
     "postcss-utilities": "^0.7.0",
     "react-test-renderer": "^15.6.2",

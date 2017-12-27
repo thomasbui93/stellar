@@ -32,7 +32,7 @@ export class CategoryPage extends React.Component {
       <div className='page-wrapper'>
         <div className='page-header'>
           <h1>{ this.props.notebook ? this.props.notebook.title : '' }</h1>
-          <Link className="button is-h-primary" to={`/note-new/${this.props.match.params.categoryId}`}>
+          <Link className='button is-h-primary' to={`/note-new/${this.props.match.params.categoryId}`}>
             Add New Note
           </Link>
         </div>
