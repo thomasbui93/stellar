@@ -12,8 +12,20 @@ const noteRepository = new NoteRepository(remoteFetch)
 export const saveNote = (note) => {
   return dispatch => {
     dispatch(isSavingNote(true))
-    return noteRepository
+    return note.key ? 
+    noteRepository
     .update(note)
+    .then(view => {
+      dispatch(saveNoteDone(view))
+    })
+    .catch(err => {
+      dispatch(saveNoteFailed(err))
+    })
+    .then(() => {
+      dispatch(isSavingNote(false))
+    }) :
+    noteRepository
+    .insert(note)
     .then(view => {
       dispatch(saveNoteDone(view))
     })
@@ -33,16 +45,16 @@ export const isSavingNote = isLoading => {
   }
 }
 
-export const saveNoteDone = view => {
+export const saveNoteDone = note => {
   return {
     type: NOTE_SAVING_VIEW_DONE,
-    view: view
+    note: note
   }
 }
 
 export const saveNoteFailed = err => {
   return {
     type: NOTE_SAVING_VIEW_FAILED,
-    view: err
+    error: err
   }
 }

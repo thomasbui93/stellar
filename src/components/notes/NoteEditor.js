@@ -6,23 +6,23 @@ import {
   convertFromHTML,
   RichUtils
 } from 'draft-js'
-import {stateToHTML} from 'draft-js-export-html';
+import {stateToHTML} from 'draft-js-export-html'
 import React from 'react'
-import PropTypes from 'prop-types' 
+import PropTypes from 'prop-types'
 
 export default class NoteEditor extends React.Component {
-  constructor(props){
+  constructor (props) {
     super(props)
-    this.focus = () => this.refs.editor.focus();
-    this.onChange = (editorState) => this.setState({editorState});
+    this.focus = () => this.refs.editor.focus()
+    this.onChange = (editorState) => this.setState({editorState})
 
-    this.handleKeyCommand = (command) => this._handleKeyCommand(command);
-    this.onTab = (e) => this._onTab(e);
-    this.toggleBlockType = (type) => this._toggleBlockType(type);
-    this.toggleInlineStyle = (style) => this._toggleInlineStyle(style);
+    this.handleKeyCommand = (command) => this._handleKeyCommand(command)
+    this.onTab = (e) => this._onTab(e)
+    this.toggleBlockType = (type) => this._toggleBlockType(type)
+    this.toggleInlineStyle = (style) => this._toggleInlineStyle(style)
     this.saveNoteAction = () => this.props.saveNoteAction({
       content: stateToHTML(this.state.editorState.getCurrentContent())
-    });
+    })
   }
   static propTypes = {
     content: PropTypes.string.isRequired,
@@ -30,69 +30,68 @@ export default class NoteEditor extends React.Component {
   }
 
   state = {
-    editorState: EditorState.createWithContent(
+    editorState: this.props.content ? EditorState.createWithContent(
       ContentState.createFromBlockArray(
         convertFromHTML(this.props.content).contentBlocks,
-        convertFromHTML(this.props.content).entityMap,
+        convertFromHTML(this.props.content).entityMap
       ),
       new CompositeDecorator([
         {
           strategy: findLinkEntities,
-          component: Link,
+          component: Link
         },
         {
           strategy: findImageEntities,
-          component: Image,
-        },
+          component: Image
+        }
       ])
-    ),
+    ) : EditorState.createEmpty()
   }
 
-  _handleKeyCommand(command) {
-    const {editorState} = this.state;
-    const newState = RichUtils.handleKeyCommand(editorState, command);
+  _handleKeyCommand (command) {
+    const {editorState} = this.state
+    const newState = RichUtils.handleKeyCommand(editorState, command)
     if (newState) {
-      this.onChange(newState);
-      return true;
+      this.onChange(newState)
+      return true
     }
-    return false;
+    return false
   }
 
-  _onTab(e) {
-    const maxDepth = 4;
-    this.onChange(RichUtils.onTab(e, this.state.editorState, maxDepth));
+  _onTab (e) {
+    const maxDepth = 4
+    this.onChange(RichUtils.onTab(e, this.state.editorState, maxDepth))
   }
 
-  _toggleBlockType(blockType) {
+  _toggleBlockType (blockType) {
     this.onChange(
       RichUtils.toggleBlockType(
         this.state.editorState,
         blockType
       )
-    );
+    )
   }
 
-  _toggleInlineStyle(inlineStyle) {
+  _toggleInlineStyle (inlineStyle) {
     this.onChange(
       RichUtils.toggleInlineStyle(
         this.state.editorState,
         inlineStyle
       )
-    );
+    )
   }
 
-
-  render() {
-    let className = 'RichEditor-editor';
-    var contentState = this.state.editorState.getCurrentContent();
+  render () {
+    let className = 'RichEditor-editor'
+    var contentState = this.state.editorState.getCurrentContent()
     if (!contentState.hasText()) {
       if (contentState.getBlockMap().first().getType() !== 'unstyled') {
-        className += ' RichEditor-hidePlaceholder';
+        className += ' RichEditor-hidePlaceholder'
       }
     }
     return (
-      <div className="RichEditor-editor">
-        <div className="RichEditor-toolbar">
+      <div className='RichEditor-editor'>
+        <div className='RichEditor-toolbar'>
           <BlockStyleControls
             editorState={this.state.editorState}
             onToggle={this.toggleBlockType}
@@ -103,8 +102,8 @@ export default class NoteEditor extends React.Component {
           />
           <button onClick={this.saveNoteAction} className='button is-primary'>
             Save
-          </button> 
-        </div>     
+          </button>
+        </div>
         <div className={className} onClick={this.focus}>
           <Editor
             editorState={this.state.editorState}
@@ -113,61 +112,60 @@ export default class NoteEditor extends React.Component {
             handleKeyCommand={this.handleKeyCommand}
             onTab={this.onTab}
             onChange={this.onChange}
-            ref="editor"
-            spellCheck={true}
+            ref='editor'
+            spellCheck
           />
         </div>
       </div>
-    );
+    )
   }
-
 }
 const findLinkEntities = (contentBlock, callback, contentState) => {
   contentBlock.findEntityRanges(
     (character) => {
-      const entityKey = character.getEntity();
+      const entityKey = character.getEntity()
       return (
         entityKey !== null &&
         contentState.getEntity(entityKey).getType() === 'LINK'
-      );
+      )
     },
     callback
-  );
+  )
 }
 
 const findImageEntities = (contentBlock, callback, contentState) => {
   contentBlock.findEntityRanges(
     (character) => {
-      const entityKey = character.getEntity();
+      const entityKey = character.getEntity()
       return (
         entityKey !== null &&
         contentState.getEntity(entityKey).getType() === 'IMAGE'
-      );
+      )
     },
     callback
-  );
+  )
 }
 
 const Image = (props) => {
   const {
     height,
     src,
-    width,
-  } = props.contentState.getEntity(props.entityKey).getData();
+    width
+  } = props.contentState.getEntity(props.entityKey).getData()
 
   return (
-    <img src={src} height={height} width={width}/>
-  );
-};
+    <img src={src} height={height} width={width} />
+  )
+}
 
 const Link = (props) => {
-  const {url} = props.contentState.getEntity(props.entityKey).getData();
+  const {url} = props.contentState.getEntity(props.entityKey).getData()
   return (
     <a href={url} >
       {props.children}
     </a>
-  );
-};
+  )
+}
 
 const styleMap = {
   CODE: {
@@ -175,36 +173,36 @@ const styleMap = {
     fontFamily: '"Inconsolata", "Menlo", "Consolas", monospace',
     fontSize: 16,
     margin: '7.5px 15px'
-  },
-};
+  }
+}
 
-function getBlockStyle(block) {
+function getBlockStyle (block) {
   switch (block.getType()) {
-    case 'blockquote': return 'RichEditor-blockquote';
-    default: return null;
+    case 'blockquote': return 'RichEditor-blockquote'
+    default: return null
   }
 }
 
 class StyleButton extends React.Component {
-  constructor() {
-    super();
+  constructor () {
+    super()
     this.onToggle = (e) => {
-      e.preventDefault();
-      this.props.onToggle(this.props.style);
-    };
+      e.preventDefault()
+      this.props.onToggle(this.props.style)
+    }
   }
 
-  render() {
-    let className = 'RichEditor-styleButton';
+  render () {
+    let className = 'RichEditor-styleButton'
     if (this.props.active) {
-      className += ' RichEditor-activeButton';
+      className += ' RichEditor-activeButton'
     }
 
     return (
       <span className={className} onMouseDown={this.onToggle}>
         {this.props.label}
       </span>
-    );
+    )
   }
 }
 
@@ -218,19 +216,19 @@ const BLOCK_TYPES = [
   {label: 'Blockquote', style: 'blockquote'},
   {label: 'UL', style: 'unordered-list-item'},
   {label: 'OL', style: 'ordered-list-item'},
-  {label: 'Code Block', style: 'code-block'},
-];
+  {label: 'Code Block', style: 'code-block'}
+]
 
 const BlockStyleControls = (props) => {
-  const {editorState} = props;
-  const selection = editorState.getSelection();
+  const {editorState} = props
+  const selection = editorState.getSelection()
   const blockType = editorState
     .getCurrentContent()
     .getBlockForKey(selection.getStartKey())
-    .getType();
+    .getType()
 
   return (
-    <div className="RichEditor-controls">
+    <div className='RichEditor-controls'>
       {BLOCK_TYPES.map((type) =>
         <StyleButton
           key={type.label}
@@ -241,20 +239,20 @@ const BlockStyleControls = (props) => {
         />
       )}
     </div>
-  );
-};
+  )
+}
 
 var INLINE_STYLES = [
   {label: 'Bold', style: 'BOLD'},
   {label: 'Italic', style: 'ITALIC'},
   {label: 'Underline', style: 'UNDERLINE'},
-  {label: 'Monospace', style: 'CODE'},
-];
+  {label: 'Monospace', style: 'CODE'}
+]
 
 const InlineStyleControls = (props) => {
-  var currentStyle = props.editorState.getCurrentInlineStyle();
+  var currentStyle = props.editorState.getCurrentInlineStyle()
   return (
-    <div className="RichEditor-controls">
+    <div className='RichEditor-controls'>
       {INLINE_STYLES.map(type =>
         <StyleButton
           key={type.label}
@@ -265,5 +263,5 @@ const InlineStyleControls = (props) => {
         />
       )}
     </div>
-  );
-};
+  )
+}

@@ -1,4 +1,5 @@
 import 'whatwg-fetch'
+import { getToken } from '../auth';
 
 export default class RemoteFetch {
   find (entityType, query) {
@@ -43,27 +44,40 @@ export default class RemoteFetch {
       headers: {
         'Accept': 'application/json',
         'Content-Type': 'application/json',
-        'Authorization': 'Token 77d86217bd4da00190c9cd1a00520ed4393b1728'
+        'Authorization': `Token ${getToken()}`
       }
     }
 
     const config = Object.assign({}, baseConfig, data)
     return fetch(URL, config)
     .then(function (response) {
-      return response.text()
-    })
-    .then(data => {
-      return JSON.parse(data)
+      if(!response.ok) {
+        return Promise.reject({
+          status: response.status,
+          statusText: response.statusText
+        })
+      }
+      return response.json()
     })
   }
 
   authenticate (username, password) {
-    this.fetch('/auth/authenticate', {
+    return window.fetch('/auth/authenticate', {
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json'
+      },
       method: 'POST',
-      body: {
+      body: JSON.stringify({
         username: username,
         password: password
+      })
+    })
+    .then(response => {
+      if(!response.ok) {
+        return Promise.reject(response.statusText)
       }
+      return response.json()
     })
   }
 }

@@ -1,7 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
-
 import { requestCategoryList } from './../../actions/category/index'
 import {
   removeCategoryItem,
@@ -12,6 +11,7 @@ import CategoryItem from './../../components/category/CategoryItem'
 import CategoryInlineEditor from './../../components/category/CategoryInlineEditor'
 import Loader from './../../components/general/Loader'
 import { Map } from 'immutable'
+import AuthenticatedRoute from './../../components/layout/AuthenticatedRoute'
 
 export class CategoryListPage extends React.Component {
   static defaultProps = {
@@ -149,4 +149,4 @@ export const mapDispatchToProps = dispatch => {
   }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(CategoryListPage)
+export default connect(mapStateToProps, mapDispatchToProps)(AuthenticatedRoute(CategoryListPage))

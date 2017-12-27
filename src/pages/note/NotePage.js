@@ -7,6 +7,7 @@ import { saveNote } from './../../actions/note/save'
 import Loader from './../../components/general/Loader'
 import { Link } from 'react-router-dom'
 import NoteEditor from './../../components/notes/NoteEditor'
+import AuthenticatedRoute from './../../components/layout/AuthenticatedRoute'
 
 export class NotePage extends React.Component {
   static propTypes = {
@@ -42,8 +43,8 @@ export class NotePage extends React.Component {
               </div>
               <div className='page-meta'>
                 {
-                  this.props.notebook ? 
-                  <Link to={`/categories/${this.props.notebook.key}`}> Back To {this.props.notebook.title}</Link> : ''
+                  this.props.notebook
+                  ? <Link to={`/categories/${this.props.notebook.key}`}> Back To {this.props.notebook.title}</Link> : ''
                 }
               </div>
               <div className='page-tags'>
@@ -55,7 +56,7 @@ export class NotePage extends React.Component {
               </div>
             </div>
             <div>
-              { this.props.content ? <NoteEditor content={this.props.content} saveNoteAction={this.props.saveNote}/> : '' }
+              { this.props.content ? <NoteEditor content={this.props.content} saveNoteAction={this.props.saveNote} /> : '' }
             </div>
           </div>
         }
@@ -84,11 +85,11 @@ const mapDispatchToProps = (dispatch, ownProps) => {
     saveNote: (noteData) => {
       const note = {
         ...noteData,
-        key : ownProps.match.params.noteId
+        key: ownProps.match.params.noteId
       }
       dispatch(saveNote(note))
     }
   }
 }
 
-export default withRouter(connect(mapStateToProps, mapDispatchToProps)(NotePage))
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(AuthenticatedRoute(NotePage)))

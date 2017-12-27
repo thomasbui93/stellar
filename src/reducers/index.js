@@ -7,6 +7,8 @@ import categoryCreate from './category/create'
 import categoryView from './category/view'
 import noteView from './note/view'
 import noteSave from './note/save'
+import noteNewView from './note/new'
+import userAuth from './user/auth'
 
 export default combineReducers({
   router: routerReducer,
@@ -16,5 +18,7 @@ export default combineReducers({
   categoryCreate: categoryCreate,
   categoryView: categoryView,
   noteView: noteView,
-  noteSave: noteSave
+  noteSave: noteSave,
+  noteNewView: noteNewView,
+  userAuth: userAuth
 })

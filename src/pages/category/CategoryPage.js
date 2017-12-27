@@ -8,6 +8,7 @@ import { requestCategoryView } from './../../actions/category/view'
 import { Link } from 'react-router-dom'
 import {push} from 'react-router-redux'
 import queryString from 'query-string'
+import AuthenticatedRoute from './../../components/layout/AuthenticatedRoute'
 
 export class CategoryPage extends React.Component {
   static propsTypes = {
@@ -71,4 +72,4 @@ const mapDispatchToProps = (dispatch, ownProps) => {
   }
 }
 
-export default withRouter(connect(mapStateToProps, mapDispatchToProps)(CategoryPage))
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(AuthenticatedRoute(CategoryPage)))

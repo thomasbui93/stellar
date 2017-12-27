@@ -1,10 +1,13 @@
 import React from 'react'
-import { Route, Switch, BrowserRouter } from 'react-router-dom'
+import { Switch, BrowserRouter } from 'react-router-dom'
+import { PrivateRoute, EntryRoute } from './components/layout/AuthenticatedRoute'
 import Sidebar from './components/layout/Sidebar'
 import CategoryPage from './pages/category/CategoryPage'
 import CategoryListPage from './pages/category/CategoryListPage'
 import NotePage from './pages/note/NotePage'
 import NoteNewPage from './pages/note/NoteNewPage'
+import LoginPage from './pages/user/Login'
+import LogoutPage from './pages/user/Logout'
 import './styles/index.scss'
 
 const App = () => (
@@ -13,10 +16,12 @@ const App = () => (
       <Sidebar />
       <div className='main-content'>
         <Switch>
-          <Route exact path='/categories' component={CategoryListPage} />
-          <Route exact path='/categories/:categoryId' component={CategoryPage} />
-          <Route exact path='/notes/:noteId' component={NotePage} />
-          <Route exact path='/note-new/:categoryId' component={NoteNewPage} />
+          <EntryRoute exact path='/' component={LoginPage} />
+          <PrivateRoute exact path='/categories' component={CategoryListPage} />
+          <PrivateRoute exact path='/categories/:categoryId' component={CategoryPage} />
+          <PrivateRoute exact path='/notes/:noteId' component={NotePage} />
+          <PrivateRoute exact path='/note-new/:categoryId' component={NoteNewPage} />
+          <LogoutPage exact path='/logout' component={LoginPage} />
         </Switch>
       </div>
     </div>

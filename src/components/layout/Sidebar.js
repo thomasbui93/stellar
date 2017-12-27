@@ -32,6 +32,7 @@ export default class Sidebar extends React.Component {
         <div className='sidebar__content'>
           <div className='sidebar__item'>
             <Link to='/categories'>Notebooks</Link>
+            <Link to='/logout'> Logout </Link>
           </div>
         </div>
         <div className='sidebar__footer'>
