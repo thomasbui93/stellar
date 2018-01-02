@@ -41,3 +41,12 @@
     height: auto;
   }
 }
+
+.button-group {
+  display: flex;
+  flex-direction: row;
+
+  &.action {
+    justify-content: flex-end;
+  }
+}

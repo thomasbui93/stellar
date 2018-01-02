@@ -98,11 +98,10 @@ const mapDispatchToProps = (dispatch, ownProps) => {
       dispatch(requestNoteView(ownProps.match.params.noteId))
     },
     saveNote: (noteData) => {
-      const note = {
+      dispatch(saveNote({
         ...noteData,
         key: ownProps.match.params.noteId
-      }
-      dispatch(saveNote(note))
+      }))
     },
     removeNote: () => {
       dispatch(requestRemoveNote(ownProps.match.params.noteId))

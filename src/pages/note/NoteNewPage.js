@@ -34,14 +34,13 @@ export class NoteNewPage extends React.Component {
   render () {
     return (
       <div className='page-wrapper'>
-        <div className='page-header'>
-          <h1> New Note </h1>
+        <div className='title-editor'>
+          <input type='text' ref='title' placeholder='Enter your title here' />
+        </div>
+        <div className='note-meta'>
           <div className='category-editor'>
             { this.props.notebook ? <CategorySelector notebook={this.props.notebook} /> : '' }
           </div>
-        </div>
-        <div className='title-editor'>
-          <input type='text' ref='title' placeholder='Enter your title here' />
         </div>
         <div className='content-editor'>
           <NoteEditor content='' saveNoteAction={this.saveNoteAction} />

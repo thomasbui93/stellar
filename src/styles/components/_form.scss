@@ -3,6 +3,7 @@ textarea,
 select {
   @include regularize-form();
   border: 1px solid $form-border-color;
+  font-family: $font-family-normal;
 }
 
 input,

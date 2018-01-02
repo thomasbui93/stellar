@@ -24,7 +24,7 @@ export class LoginPage extends React.Component {
 
   render () {
     return (
-      <div>
+      <div className="page-content">
         <h1> Log In </h1>
         { this.props.error ? <Notice type='error' message={this.props.error} /> : ''}
         <div className='field'>
@@ -43,8 +43,8 @@ export class LoginPage extends React.Component {
             <input type='password' ref='password' />
           </div>
         </div>
-        <div className='action'>
-          <button onClick={this.requestAuthentication}> { this.props.isLoading ? 'Logging In' : 'Login' } </button>
+        <div className='button-group action'>
+          <button className="button is-h-primary" onClick={this.requestAuthentication}> { this.props.isLoading ? 'Logging In' : 'Login' } </button>
         </div>
       </div>
     )

@@ -23,3 +23,19 @@
   font-feature-settings: 'liga';
   cursor: pointer
 }
+
+.svg-icon {
+  width: 2em;
+  height: 2em;
+  
+  path,
+  polygon,
+  rect {
+    fill: $color-primary;
+  }
+
+  circle {
+    stroke: $color-primary;
+    stroke-width: 1;
+  }
+}

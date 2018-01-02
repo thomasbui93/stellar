@@ -15,7 +15,7 @@ export default class CategorySelector extends React.Component {
       <div>
         {
           this.props.notebook
-            ? <Link to={`/categories/${this.props.notebook.key}`}>Back To {this.props.notebook.title}</Link> : ''
+            ? <Link to={`/categories/${this.props.notebook.key}`}>{this.props.notebook.title}</Link> : ''
         }
       </div>
     )
