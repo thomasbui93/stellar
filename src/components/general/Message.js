@@ -13,12 +13,12 @@ export default class Message extends React.Component {
     isClosed: false
   }
 
-  render() {
+  render () {
     return (
-      <div className={`${this.props.message.type} message ${this.state.isClosed ? 'hidden': ''}`}>
+      <div className={`${this.props.message.type} message ${this.state.isClosed ? 'hidden' : ''}`}>
         <span>{this.props.message.info}</span>
-        <span className="close-button" onClick={() => { this.setState({ isClosed: true })}}>
-          <i className="material-icons">close</i>
+        <span className='close-button' onClick={() => { this.setState({ isClosed: true }) }}>
+          <i className='material-icons'>close</i>
         </span>
       </div>
     )
