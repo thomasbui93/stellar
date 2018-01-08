@@ -45,41 +45,41 @@ export class NotePage extends React.Component {
           this.props.isLoading
           ? <Loader />
           : <div>
-              <div className='page-header'>
-                <div className='page-meta'>
-                  <h1 className='page-title'>{ this.props.title }</h1>
-                </div>
-                <div className='page-meta'>
-                  {
+            <div className='page-header'>
+              <div className='page-meta'>
+                <h1 className='page-title'>{ this.props.title }</h1>
+              </div>
+              <div className='page-meta'>
+                {
                     this.props.notebook
-                    ? <CategorySelector 
-                        notebook={this.props.notebook}
-                        isSearching={this.props.isCategorySearching}
-                        notebooks={this.props.notebooks}
-                        error={this.props.errorCategorySearching}
-                        performSearch={this.props.searchCategory}
-                        selectNewCategory={this.props.selectNewCategory}
+                    ? <CategorySelector
+                      notebook={this.props.notebook}
+                      isSearching={this.props.isCategorySearching}
+                      notebooks={this.props.notebooks}
+                      error={this.props.errorCategorySearching}
+                      performSearch={this.props.searchCategory}
+                      selectNewCategory={this.props.selectNewCategory}
                          /> : ''
                   }
-                  <button className='button is-h-danger' onClick={() => this.props.removeNote()}> Delete </button>
-                </div>
-                <div className='page-tags'>
-                  {
+                <button className='button is-h-danger' onClick={() => this.props.removeNote()}> Delete </button>
+              </div>
+              <div className='page-tags'>
+                {
                     this.props.tags.map(tag => {
                       return <Link className='tag' key={tag.key} to={`/tags/${tag.key}`}>{tag.title}</Link>
                     })
                   }
-                </div>
               </div>
-              <div className='content-editor'>
-                {
+            </div>
+            <div className='content-editor'>
+              {
                   this.props.content
                   ? <NoteEditor
                     isSaving={this.props.isSaving}
                     content={this.props.content}
                     saveNoteAction={this.props.saveNote} /> : ''
                 }
-              </div>
+            </div>
           </div>
         }
       </div>
@@ -93,7 +93,7 @@ const mapStateToProps = ({ noteView, noteSave, categorySearch }) => {
     content: noteView.content,
     createdAt: new Date(noteView.created_date),
     updatedAt: new Date(noteView.updated_date),
-    notebook: categorySearch.currentCategory ? categorySearch.currentCategory: noteView.notebook,
+    notebook: categorySearch.currentCategory ? categorySearch.currentCategory : noteView.notebook,
     isLoading: noteView.isLoading,
     tags: noteView.tags.toJS(),
     isRemoved: noteSave.isRemoved,
@@ -113,6 +113,7 @@ const mapDispatchToProps = (dispatch, ownProps) => {
     saveNote: (noteData) => {
       dispatch(saveNote({
         ...noteData,
+        notebook: ownProps.notebook.key,
         key: ownProps.match.params.noteId
       }))
     },
