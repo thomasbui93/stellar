@@ -1,6 +1,7 @@
 import { combineReducers } from 'redux'
 import { routerReducer } from 'react-router-redux'
 import categoryList from './category/list'
+import categorySearch from './category/search'
 import categoryRemoval from './category/removal'
 import categoryUpdate from './category/update'
 import categoryCreate from './category/create'
@@ -13,6 +14,7 @@ import userAuth from './user/auth'
 export default combineReducers({
   router: routerReducer,
   categoryList: categoryList,
+  categorySearch: categorySearch,
   categoryRemoval: categoryRemoval,
   categoryUpdate: categoryUpdate,
   categoryCreate: categoryCreate,

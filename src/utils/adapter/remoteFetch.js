@@ -30,6 +30,10 @@ export default class RemoteFetch {
     })
   }
 
+  search (entityType, queryString) {
+    return this.fetch(`/api/v1/${this.getEntityNameSpace(entityType)}/search/?query=${queryString}`)
+  }
+
   getEntityNameSpace (entity) {
     const entityMapper = {
       'category': 'notebooks',

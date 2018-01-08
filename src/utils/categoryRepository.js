@@ -26,6 +26,10 @@ export class CategoryRepository {
   async insert (categoryItem) {
     return this.adapter.insert('category', categoryItem)
   }
+
+  async search (query) {
+    return this.adapter.search('category', query)
+  }
 }
 
 export default new CategoryRepository(new RemoteFetch())
