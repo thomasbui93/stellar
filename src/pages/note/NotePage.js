@@ -47,7 +47,13 @@ export class NotePage extends React.Component {
           : <div>
             <div className='page-header'>
               <div className='page-meta'>
-                <h1 className='page-title'>{ this.props.title }</h1>
+              <div className='title-editor'>
+                <input 
+                  type='text'
+                  ref='title' 
+                  defaultValue={this.props.title} 
+                  onChange={ event => this.props.saveNote({ title: event.target.value }) }/>
+              </div>
               </div>
               <div className='page-meta'>
                 {
@@ -113,7 +119,6 @@ const mapDispatchToProps = (dispatch, ownProps) => {
     saveNote: (noteData) => {
       dispatch(saveNote({
         ...noteData,
-        notebook: ownProps.notebook.key,
         key: ownProps.match.params.noteId
       }))
     },
@@ -129,4 +134,18 @@ const mapDispatchToProps = (dispatch, ownProps) => {
   }
 }
 
-export default withRouter(connect(mapStateToProps, mapDispatchToProps)(AuthenticatedRoute(NotePage)))
+const mergeProps = (stateProps, dispatchProps, ownProps) => {
+  return {
+    ...stateProps,
+    ...dispatchProps,
+    saveNote: noteData => {
+      return stateProps.notebook ? 
+      dispatchProps.saveNote({
+        ...noteData,
+        notebook: stateProps.notebook.key
+      }): dispatchProps.saveNoteAction(noteData)
+    }
+  }
+}
+
+export default withRouter(connect(mapStateToProps, mapDispatchToProps, mergeProps)(AuthenticatedRoute(NotePage)))
